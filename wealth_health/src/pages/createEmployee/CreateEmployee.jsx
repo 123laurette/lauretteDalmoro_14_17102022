@@ -1,49 +1,59 @@
 import React from 'react';
+import "./CreateEmployee.css"
 
 const CreateEmployee = () => {
     return (
-        <>
+        <main>
             <h2>Create Employee</h2>
             <form id="formulaire">
-                    <label>First Name</label>
-					<input class= "text-control" aria-label = "First Name" type="text" id="first" name="first" />
-                <div className='formData'>
-					<label >Last Name</label>
-					<input class= "text-control" aria-label = "Last Name" type="text" id="last" name="last" />
-				</div>
-				<div className='formData'>
-					<label >Date of Birth</label>
-					<input class= "text-control" aria-label = "Date of Birth" type="number" id="birth" name="birth" />
-				</div>
-				<div className='formData'>
-					<label >Start Date</label>
-					<input class= "text-control" aria-label = "Start date" type="number" id="start" name="start" />
-				</div>
-                <div className='formData'>
-                    <label >Street</label>
-					<input class= "text-control" aria-label = "street" type="text" id="street" name="street" />
-					</div>
-				<div className='formData'>
-					<label >City</label>
-					<input class= "text-control" aria-label = "city" type="text" id="city" name="city" />
-				</div>
-                <div className='formData'>
-                    <label >State</label>
-					<input class= "text-control" aria-label = "state" type="text" id="state" name="state" />
-					</div>
-				<div className='formData'>
-					<label >Zip Code</label>
-					<input class= "text-control" aria-label = "code" type="text" id="code" name="code" />
-				</div>
-                <div className='formData'>
-					<label >Department</label>
-					<input class= "text-control" aria-label = "department" type="number" id="department" name="department" />
-				</div>
+                <section className='employee'>
 
-
-          <button class="contact_button"  aria-label = "envoyer le formulaire" id="envoyer">Save</button>
-				</form>
-        </>
+                    <div className='formData'>
+                        <label>First Name</label>
+					    <input className= "text-control" aria-label = "First Name" type="text" id="first" name="first" />
+                    </div>
+                    <div className='formData'>
+					    <label >Last Name</label>
+					    <input className= "text-control" aria-label = "Last Name" type="text" id="last" name="last" />
+				    </div>
+				    <div className='formData'>
+					    <label >Date of Birth</label>
+					    <input className= "text-control" aria-label = "Date of Birth" type="number" id="birth" name="birth" />
+				    </div>
+				    <div className='formData'>
+					    <label >Start Date</label>
+					    <input className= "text-control" aria-label = "Start date" type="number" id="start" name="start" />
+				    </div>
+                </section>
+                <section className='adresse'>
+                    <div className='formData'>
+                        <label >Street</label>
+					    <input className= "text-control" aria-label = "street" type="text" id="street" name="street" />
+					</div>
+				    <div className='formData'>
+					    <label >City</label>
+					    <input className= "text-control" aria-label = "city" type="text" id="city" name="city" />
+				    </div>
+                    <div className='formData'>
+                        <label >State</label>
+					    <input className= "text-control" aria-label = "state" type="text" id="state" name="state" />
+					</div>
+				    <div className='formData'>
+					    <label >Zip Code</label>
+					    <input className= "text-control" aria-label = "code" type="text" id="code" name="code" />
+				    </div>
+                    
+                </section>
+                <section className='department'>
+                    <div className='formData'>
+					    <label >Department</label>
+					    <input className= "text-control" aria-label = "department" type="text" id="department" name="department" />
+                    </div>
+                </section>
+                
+			</form>
+            <button className="save" type='button'  aria-label = "enregistrer le nouvel employe" id="save">Save</button>
+        </main>
     );
 };
 
