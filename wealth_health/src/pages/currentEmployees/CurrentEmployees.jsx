@@ -1,6 +1,7 @@
 import React from 'react';
 import "./CurrentEmployees.css"
 import ListeData from "./../../components/current/listeData/ListeData"
+//import InputSearch from '../../components/current/inputSearch/InputSearch';
 //import {renderTodos} from "./../../components/create/Create"
 
 const CurrentEmployees = () => {
@@ -15,8 +16,14 @@ const CurrentEmployees = () => {
                 <p className='entries'>entries</p>
             </div>
             <div className='droite'>
+                {/*<InputSearch />*/}
                 <p className='search'>Search</p>
-                <input></input>
+                <input
+                type="text"
+                name="searchBar"
+                id="searchBar"
+                placeholder='Rechercher'/>
+                
             </div>
         </section>
 

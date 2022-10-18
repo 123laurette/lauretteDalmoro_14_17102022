@@ -1,13 +1,16 @@
 import React from 'react';
 import "./CreateEmployee.css"
-import Create from "../../components/create/FormCreate"
+import FormCreate from "../../components/create/FormCreate"
 
 const CreateEmployee = () => {
     return (
         <main>
             <h2 className='create'>Create Employee</h2>
-            <Create />
-        <div id="confirmation" className="modal">Employee Created!</div>
+
+            <FormCreate />
+
+            <div id="confirmation" className="modal">Employee Created!</div>
+            
         </main>
     );
 };

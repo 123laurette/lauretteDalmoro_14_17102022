@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "./FormCreate.css"
 
-class Create extends Component {
+class FormCreate extends Component {
     constructor() {
         super();
         this.state = {
@@ -51,8 +51,8 @@ class Create extends Component {
 
     render() {
         return(
-            <div>
-        <form id="formulaire">
+            <>
+            <form id="formulaire">
                 <section className='employee'>
                     <label htmlFor="first-name">First Name</label>
                     <input type="text" id="first-name" value={this.state.userInput.first} onChange={this.onChange.bind(this)} />
@@ -69,17 +69,17 @@ class Create extends Component {
 
                 <section className='adresse'>
 
-                        <label htmlFor="street">Street</label>
-                        <input id="street" type="text"  />
+                    <label htmlFor="street">Street</label>
+                    <input id="street" type="text"  />
 
-                        <label htmlFor="city">City</label>
-                        <input id="city" type="text"  />
+                    <label htmlFor="city">City</label>
+                    <input id="city" type="text"  />
         {/*inserer une liste pour les states*/}
-                        <label htmlFor="state">State</label>
-                        <input name="state" id="state" ></input>
+                    <label htmlFor="state">State</label>
+                    <input name="state" id="state" ></input>
 
-                        <label htmlFor="zip-code">Zip Code</label>
-                        <input id="zip-code" type="number" />
+                    <label htmlFor="zip-code">Zip Code</label>
+                    <input id="zip-code" type="number" />
                 </section>
 
                 <section className='department'>
@@ -95,12 +95,13 @@ class Create extends Component {
                 
 			</form>
             <button className="save" onClick={this.addTodo.bind(this)}>Save</button>
+            
                 <div className="list-group">
                     {this.renderTodos()}
                 </div>
-            </div>
+            </>
         );
     }
 }
 
-export default Create;
+export default FormCreate;
