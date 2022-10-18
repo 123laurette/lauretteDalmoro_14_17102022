@@ -1,13 +1,12 @@
 import React from 'react';
 import "./CurrentEmployees.css"
+import ListeData from "./../../components/current/listeData/ListeData"
+//import {renderTodos} from "./../../components/create/Create"
 
 const CurrentEmployees = () => {
     return (
         <>
-            
-
-
-        <h2>Current Employees</h2>
+        <h2 className='current'>Current Employees</h2>
 
         <section className='header'>
             <div className='gauche'>
@@ -20,18 +19,11 @@ const CurrentEmployees = () => {
                 <input></input>
             </div>
         </section>
+
         <section className='enteteTable'>
-            <p>First Name</p>
-            <p>Last Name</p>
-            <p>Start Date</p>
-            <p>Department</p>
-            <p>Date of Birth</p>
-            <p>Street</p>
-            <p>City</p>
-            <p>State</p>
-            <p>Zip Code</p>
+            <ListeData />
         </section>
-        <div className='detailList'>No data available in table</div>
+
         <footer>
             <p>Showing 0 to 0 of 0 entries</p>
             <p>Previous</p>

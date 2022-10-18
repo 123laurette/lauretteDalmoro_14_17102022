@@ -1,53 +1,12 @@
 import React from 'react';
 import "./CreateEmployee.css"
+import Create from "../../components/create/FormCreate"
 
 const CreateEmployee = () => {
     return (
         <main>
-            <h2>Create Employee</h2>
-            <form id="formulaire">
-                <section className='employee'>
-                    <label htmlFor="first-name">First Name</label>
-                    <input type="text" id="first-name" />
-
-                    <label htmlFor="last-name">Last Name</label>
-                    <input type="text" id="last-name" />
-
-                    <label htmlFor="date-of-birth">Date of Birth</label>
-                    <input id="date-of-birth" type="date" />
-
-                    <label htmlFor="start-date">Start Date</label>
-                    <input id="start-date" type="date" />
-                </section>
-
-                <section className='adresse'>
-
-                        <label htmlFor="street">Street</label>
-                        <input id="street" type="text" />
-
-                        <label htmlFor="city">City</label>
-                        <input id="city" type="text" />
-        {/*inserer une liste pour les states*/}
-                        <label htmlFor="state">State</label>
-                        <input name="state" id="state"></input>
-
-                        <label htmlFor="zip-code">Zip Code</label>
-                        <input id="zip-code" type="number" />
-                </section>
-
-                <section className='department'>
-                    <select name="department" id="department" >
-                        <option>Department</option>
-                        <option>Sales</option>
-                        <option>Marketing</option>
-                        <option>Engineering</option>
-                        <option>Human Resources</option>
-                        <option>Legal</option>
-                    </select>
-                </section>
-                
-			</form>
-            <button className="save">Save</button>
+            <h2 className='create'>Create Employee</h2>
+            <Create />
         <div id="confirmation" className="modal">Employee Created!</div>
         </main>
     );
