@@ -7,15 +7,10 @@ import ListeData from "./../../components/current/listeData/ListeData"
 const CurrentEmployees = () => {
     return (
         <>
-        <h2 className='current'>Current Employees</h2>
+        <h2 className='current'>list of employees
+        </h2>
 
-        <section className='header'>
-            <div className='gauche'>
-                <p className='show'>Show</p>
-                <span>liste déroulante</span>
-                <p className='entries'>entries</p>
-            </div>
-            <div className='droite'>
+        <div className='inputSearch'>
                 {/*<InputSearch />*/}
                 <p className='search'>Search</p>
                 <input
@@ -24,18 +19,13 @@ const CurrentEmployees = () => {
                 id="searchBar"
                 placeholder='Rechercher'/>
                 
-            </div>
-        </section>
+        </div>
 
         <section className='enteteTable'>
             <ListeData />
         </section>
 
-        <footer>
-            <p>Showing 0 to 0 of 0 entries</p>
-            <p>Previous</p>
-            <p>Next</p>
-        </footer>
+        
         </>
     );
 };

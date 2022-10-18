@@ -1,10 +1,26 @@
 import DataTable from "react-data-table-component"
 import "./ListeData.css"
 
+const caseInsensitiveSort = (rowA, rowB) => {
+    const a = rowA.first.toLowerCase();
+    const b = rowB.first.toLowerCase();
+
+    if (a > b) {
+        return 1;
+    }
+
+    if (b > a) {
+        return -1;
+    }
+
+    return 0;
+};
 const columns = [
     {
         name: 'First Name',
         selector: row => row.first,
+        sortFunction: caseInsensitiveSort
+
     },
     {
         name: 'Last Name',
@@ -53,11 +69,14 @@ const data = [
     },
 ]
 
+
+
 function MyComponent() {
     return (
         <DataTable
             columns={columns}
             data={data}
+            pagination
         />
     );
 };
