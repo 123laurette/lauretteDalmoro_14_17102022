@@ -23,7 +23,7 @@ const InputSearch = () => {
                 type="text"
                 name="searchBar"
                 id="searchBar"
-                placeholder='Rechercher'
+                placeholder='to research'
                 onChange={handleSearchTerm}/>
             <div className='search_results'>
                 {datas.filter((val) => {

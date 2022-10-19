@@ -17,7 +17,7 @@ const CurrentEmployees = () => {
                 type="text"
                 name="searchBar"
                 id="searchBar"
-                placeholder='Rechercher'/>
+                placeholder='to research'/>
                 
         </div>
 

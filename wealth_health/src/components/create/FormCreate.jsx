@@ -7,7 +7,9 @@ class FormCreate extends Component {
         this.state = {
             userInput: {
                 first: "",
-                last: ""
+                last: "",
+                birth: "",
+                start: ""
             } ,
             items: []
         };
@@ -15,7 +17,7 @@ class FormCreate extends Component {
 
     onChange(event) {
         this.setState({
-            userInput: event.target.value
+            userInput : event.target.value
         });
     }
 
@@ -53,18 +55,18 @@ class FormCreate extends Component {
         return(
             <>
             <form id="formulaire">
+                
                 <section className='employee'>
                     <label htmlFor="first-name">First Name</label>
-                    <input type="text" id="first-name" value={this.state.userInput.first} onChange={this.onChange.bind(this)} />
-                    
+                    <input type="text" id="first-name" name="first" value={this.state.userInput.first} onChange={this.onChange.bind(this)} />
                     <label htmlFor="last-name">Last Name</label>
-                    <input type="text" id="last-name" value={this.state.userInput.last} onChange={this.onChange.bind(this)} />
+                    <input type="text" id="last-name" name="last" value={this.state.userInput.last} onChange={this.onChange.bind(this)} />
 
                     <label htmlFor="date-of-birth">Date of Birth</label>
-                    <input id="date-of-birth" type="date" value={this.state.userInput} onChange={this.onChange.bind(this)} />
+                    <input id="date-of-birth" type="date"name="birth" value={this.state.userInput.birth} onChange={this.onChange.bind(this)} />
 
                     <label htmlFor="start-date">Start Date</label>
-                    <input id="start-date" type="date" value={this.state.userInput} onChange={this.onChange.bind(this)} />
+                    <input id="start-date" type="date" name="start" value={this.state.userInput.start} onChange={this.onChange.bind(this)} />
                 </section>
 
                 <section className='adresse'>
@@ -92,13 +94,14 @@ class FormCreate extends Component {
                         <option>Legal</option>
                     </select>
                 </section>
-                
+
 			</form>
             <button className="save" onClick={this.addTodo.bind(this)}>Save</button>
             
                 <div className="list-group">
                     {this.renderTodos()}
                 </div>
+
             </>
         );
     }
