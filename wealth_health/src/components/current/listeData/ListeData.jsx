@@ -1,73 +1,62 @@
 import DataTable from "react-data-table-component"
 import "./ListeData.css"
 
-const caseInsensitiveSort = (rowA, rowB) => {
-    const a = rowA.first.toLowerCase();
-    const b = rowB.first.toLowerCase();
 
-    if (a > b) {
-        return 1;
-    }
 
-    if (b > a) {
-        return -1;
-    }
 
-    return 0;
-};
+
 const columns = [
     {
         name: 'First Name',
         selector: row => row.first,
-        sortFunction: caseInsensitiveSort
-
+        sortable: true
     },
     {
         name: 'Last Name',
         selector: row => row.last,
-        sortFunction: caseInsensitiveSort
+        sortable: true
 
     },
     {
         name: 'Start Date',
         selector: row => row.start,
-        sortFunction: caseInsensitiveSort
+        sortable: true
 
     },
     {
         name: 'Department',
         selector: row => row.department,
-        sortFunction: caseInsensitiveSort
+        sortable: true
 
     },
     {
         name: 'Date of Birth',
         selector: row => row.birth,
-        sortFunction: caseInsensitiveSort
+        sortable: true
 
     },
     {
         name: 'Street',
         selector: row => row.street,
-        sortFunction: caseInsensitiveSort
+        sortable: true
 
     },
     {
         name: 'City',
         selector: row => row.city,
-        sortFunction: caseInsensitiveSort
+        sortable: true
 
     },
     {
         name: 'State',
         selector: row => row.state,
-        sortFunction: caseInsensitiveSort
+        sortable: true
 
     },
     {
         name: 'Zip Code',
         selector: row => row.code,
-        sortFunction: caseInsensitiveSort
+        sortable: true
 
     },
 ];
@@ -106,11 +95,13 @@ const data = [
 
 function MyComponent() {
     return (
+        <>
         <DataTable
             columns={columns}
             data={data}
             pagination
         />
+        </>
     );
 };
 

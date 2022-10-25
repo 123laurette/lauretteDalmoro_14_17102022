@@ -1,5 +1,22 @@
 import React, { Component } from 'react';
 import "./FormCreate.css"
+import DatePicker from "./DatePicker"
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
+import {states} from "../../data/states"
+
+const departments = ["Sales", "Marketing", "Engineering", "Human Resources", "Legal"]
+const defaultOptionDepart = "Departments";
+
+const defaultOptionStates = "Select an option"
+const statesFilter= (states) => {
+    const tabStatesFilter = [];
+    states.map(state => (
+        tabStatesFilter.push(state.name)
+    ))
+    return tabStatesFilter;
+}
+const statesName= statesFilter(states)
 
 class FormCreate extends Component {
     constructor() {
@@ -57,16 +74,19 @@ class FormCreate extends Component {
             <form id="formulaire">
                 
                 <section className='employee'>
+
                     <label htmlFor="first-name">First Name</label>
                     <input type="text" id="first-name" name="first" value={this.state.userInput.first} onChange={this.onChange.bind(this)} />
+
                     <label htmlFor="last-name">Last Name</label>
                     <input type="text" id="last-name" name="last" value={this.state.userInput.last} onChange={this.onChange.bind(this)} />
 
                     <label htmlFor="date-of-birth">Date of Birth</label>
-                    <input id="date-of-birth" type="date"name="birth" value={this.state.userInput.birth} onChange={this.onChange.bind(this)} />
+                    <DatePicker  />
 
                     <label htmlFor="start-date">Start Date</label>
-                    <input id="start-date" type="date" name="start" value={this.state.userInput.start} onChange={this.onChange.bind(this)} />
+                    <DatePicker  />
+
                 </section>
 
                 <section className='adresse'>
@@ -78,21 +98,14 @@ class FormCreate extends Component {
                     <input id="city" type="text"  />
         {/*inserer une liste pour les states*/}
                     <label htmlFor="state">State</label>
-                    <input name="state" id="state" ></input>
+                    <Dropdown options={statesName} onChange={this._onSelect} value={defaultOptionStates} />
 
                     <label htmlFor="zip-code">Zip Code</label>
                     <input id="zip-code" type="number" />
                 </section>
 
                 <section className='department'>
-                    <select name="department" id="department" >
-                        <option>Department</option>
-                        <option>Sales</option>
-                        <option>Marketing</option>
-                        <option>Engineering</option>
-                        <option>Human Resources</option>
-                        <option>Legal</option>
-                    </select>
+                    <Dropdown options={departments} onChange={this._onSelect} value={defaultOptionDepart} placeholder="Select an option" />
                 </section>
 
 			</form>

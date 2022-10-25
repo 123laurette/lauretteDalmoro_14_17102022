@@ -19,18 +19,18 @@ form input{
     margin-top: 40px;
     margin-left: 240px;
     width: 37%;
-    height:400px;
+    height:380px;
     color: white;
 }
 .employee label, .adresse label{
     margin-left: 15px;
 }
-.employee input, .adresse input, .department input{
+.employee input, .adresse input, .select{
     border-radius: 20px;
     margin-top: 10px;
     margin-bottom: 20px;
     width: 70%;
-    height: 70px;
+    height: 40px;
     font-size: 20px;
     padding-left: 20px;
     padding-right: 20px;
@@ -39,20 +39,12 @@ form input{
     display: flex;
     flex-direction: column;
     width: 40%;
+    height: 70px;
     color: white;
-    margin-left: 40.5%;
-    margin-top: -20px;
+    margin-left: 36.5%;
 }
-.department label{
-    margin-left: 18%;
-}
-#department{
-    width: 50%;
-    height: 50px;
-    border-radius: 20px;
-    font-size: 20px;
-}
-#department option{
+
+.select option{
     font-size: 20px;
     text-align: center;
 
