@@ -5,6 +5,7 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import {states} from "../../data/states"
 
+//Gestion des listes dropdown
 const departments = ["Sales", "Marketing", "Engineering", "Human Resources", "Legal"]
 const defaultOptionDepart = "Departments";
 
@@ -17,6 +18,9 @@ const statesFilter= (states) => {
     return tabStatesFilter;
 }
 const statesName= statesFilter(states)
+
+
+
 
 class FormCreate extends Component {
     constructor() {
@@ -96,7 +100,7 @@ class FormCreate extends Component {
 
                     <label htmlFor="city">City</label>
                     <input id="city" type="text"  />
-        {/*inserer une liste pour les states*/}
+                    
                     <label htmlFor="state">State</label>
                     <Dropdown options={statesName} onChange={this._onSelect} value={defaultOptionStates} />
 

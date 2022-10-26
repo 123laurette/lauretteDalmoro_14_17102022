@@ -3,7 +3,7 @@ import "./InputSearch.css"
 import { useState, useEffect } from 'react';
 
 const InputSearch = () => {
-    const [datas, setDatas] = useState("")
+    const [datas, setDatas] = useState([])
     const [searchTerm, setSearchTerm] = useState("")
 
     useEffect(() => {
@@ -27,17 +27,19 @@ const InputSearch = () => {
                 onChange={handleSearchTerm}/>
             <div className='search_results'>
                 {datas.filter((val) => {
-                    return val.title.toLowerCase().includes(searchTerm.toLocaleLowerCase());
+                    return val.firstName.toLowerCase().includes(searchTerm.toLocaleLowerCase());
                 })
                 .map((val) => {
                     return (
-                        <div className='search_result' key={val.id}>{val.title}
+                        <div className='search_result' key={val.id}>{val.firstName}
                         </div>
                     );
-                })}
+                })
+                }
             </div>
         </>
     );
 };
 
 export default InputSearch;
+

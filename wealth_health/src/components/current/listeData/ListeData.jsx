@@ -2,9 +2,6 @@ import DataTable from "react-data-table-component"
 import "./ListeData.css"
 
 
-
-
-
 const columns = [
     {
         name: 'First Name',
@@ -92,15 +89,14 @@ const data = [
 ]
 
 
-
 function MyComponent() {
     return (
         <>
-        <DataTable
+            <DataTable
             columns={columns}
             data={data}
             pagination
-        />
+            />
         </>
     );
 };

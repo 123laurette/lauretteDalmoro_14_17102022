@@ -1,7 +1,7 @@
 import React from 'react';
 import "./CurrentEmployees.css"
 import ListeData from "./../../components/current/listeData/ListeData"
-//import InputSearch from '../../components/current/inputSearch/InputSearch';
+import InputSearch from '../../components/current/inputSearch/InputSearch';
 //import {renderTodos} from "./../../components/create/Create"
 
 const CurrentEmployees = () => {
@@ -11,14 +11,7 @@ const CurrentEmployees = () => {
         </h2>
 
         <div className='inputSearch'>
-                {/*<InputSearch />*/}
-                <p className='search'>Search</p>
-                <input
-                type="text"
-                name="searchBar"
-                id="searchBar"
-                placeholder='to research'/>
-                
+            <InputSearch /> 
         </div>
 
         <section className='enteteTable'>
