@@ -30,7 +30,12 @@ class FormCreate extends Component {
                 first: "",
                 last: "",
                 birth: "",
-                start: ""
+                start: "",
+                street: "",
+                city: "",
+                state: "",
+                code: "",
+                departments: ""
             } ,
             items: []
         };
