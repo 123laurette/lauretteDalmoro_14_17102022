@@ -7,9 +7,7 @@ import {states} from "../../data/states"
 
 //Gestion des listes dropdown
 const departments = ["Sales", "Marketing", "Engineering", "Human Resources", "Legal"]
-const defaultOptionDepart = "Departments";
 
-const defaultOptionStates = "Select an option"
 const statesFilter= (states) => {
     const tabStatesFilter = [];
     states.map(state => (
@@ -26,7 +24,6 @@ class FormCreate extends Component {
     constructor() {
         super();
         this.state = {
-            userInput: {
                 first: "",
                 last: "",
                 birth: "",
@@ -35,29 +32,83 @@ class FormCreate extends Component {
                 city: "",
                 state: "",
                 code: "",
-                departments: ""
-            } ,
-            items: []
+                departments: "",
+                items: []
         };
     }
 
-    onChange(event) {
+    
+    onChangeFirst(event) {
         this.setState({
-            userInput : event.target.value
+                first:event.target.value
+        });
+    }
+
+    onChangeLast(event) {
+        this.setState({
+                last:event.target.value
+        });
+    }
+
+    onChangeBirth(event) {
+        this.setState({
+                birth:event.target.value
+        });
+    }
+
+    onChangeStart(event) {
+        this.setState({
+                start:event.target.value
+        });
+    }
+
+    onChangeStreet(event) {
+        this.setState({
+                street:event.target.value
+        });
+    }
+
+    onChangeCity(event) {
+        this.setState({
+                city:event.target.value
+        });
+    }
+
+    onChangeState(event) {
+        this.setState({
+                state:event.target.value
+        });
+    }
+
+    onChangeCode(event) {
+        this.setState({
+                code:event.target.value
+        });
+    }
+
+    onChangeDepartments(event) {
+        this.setState({
+                departments:event.target.value
         });
     }
 
     addTodo(event) {
         event.preventDefault();
         this.setState({
-            userInput: '',
-            items: [...this.state.items, this.state.userInput]
+            first: "",
+            last: "",
+            birth: "",
+            start: "",
+            street: "",
+            city: "",
+            state: "",
+            code: "",
+            departments: "",
+            items: [...this.state.items, this.state.first, this.state.last, this.state.birth, this.state.start, this.state.street, this.state.city, this.state.state, this.state.code, this.state.departments]
         });
     }
 
     deleteTodo(item) {
-        // no event 
-        // pass the item to indexOf
         const array = this.state.items;
         const index = array.indexOf(item);
         array.splice(index, 1);
@@ -66,7 +117,6 @@ class FormCreate extends Component {
         });
     }
 
-    // add item to deleteTodo.bind(this, item)
     renderTodos() {
         return this.state.items.map((item) => {
             return (
@@ -85,36 +135,36 @@ class FormCreate extends Component {
                 <section className='employee'>
 
                     <label htmlFor="first-name">First Name</label>
-                    <input type="text" id="first-name" name="first" value={this.state.userInput.first} onChange={this.onChange.bind(this)} />
+                    <input type="text" id="first-name" name="first" value={this.state.first} onChange={this.onChangeFirst.bind(this)} />
 
                     <label htmlFor="last-name">Last Name</label>
-                    <input type="text" id="last-name" name="last" value={this.state.userInput.last} onChange={this.onChange.bind(this)} />
+                    <input type="text" id="last-name" name="last" value={this.state.last} onChange={this.onChangeLast.bind(this)} />
 
                     <label htmlFor="date-of-birth">Date of Birth</label>
-                    <DatePicker  />
+                    <DatePicker  name="birth" value={this.state.last} onChange={this.onChangeLast.bind(this)}/>
 
                     <label htmlFor="start-date">Start Date</label>
-                    <DatePicker  />
+                    <DatePicker  name="start" value={this.state.last} />
 
                 </section>
 
                 <section className='adresse'>
 
                     <label htmlFor="street">Street</label>
-                    <input id="street" type="text"  />
+                    <input id="street" type="text" name="street" value={this.state.street} onChange={this.onChangeStreet.bind(this)}  />
 
                     <label htmlFor="city">City</label>
-                    <input id="city" type="text"  />
+                    <input id="city" type="text"  name="city" value={this.state.city} onChange={this.onChangeCity.bind(this)}/>
                     
                     <label htmlFor="state">State</label>
-                    <Dropdown options={statesName} onChange={this._onSelect} value={defaultOptionStates} />
+                    <Dropdown options={statesName} onChange={this._onSelect} placeholder="Select an option"name="state" value={this.state.state}  />
 
                     <label htmlFor="zip-code">Zip Code</label>
-                    <input id="zip-code" type="number" />
+                    <input id="zip-code" type="text" name="code" value={this.state.code} onChange={this.onChangeCode.bind(this)} />
                 </section>
 
                 <section className='department'>
-                    <Dropdown options={departments} onChange={this._onSelect} value={defaultOptionDepart} placeholder="Select an option" />
+                    <Dropdown options={departments} onChange={this._onSelect} placeholder="Departments" name="departments" value={this.state.departments} />
                 </section>
 
 			</form>
