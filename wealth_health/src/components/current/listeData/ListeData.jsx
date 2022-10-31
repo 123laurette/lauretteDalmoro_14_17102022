@@ -135,7 +135,8 @@ const data = [
 ]
 
 const subHeaderComponent = (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
+    <div style={{ display: 'flex', alignItems: 'center'
+    }}>
         <input id="outlined-basic" label="Search" variant="outlined" size="small"  style={{ margin: '5px' }} />
 
     </div>
@@ -162,3 +163,14 @@ function MyComponent() {
 };
 
 export default MyComponent
+
+/*reflexion :
+les values du formulaire sont récupérées dans item fonction renderTodos
+importer la fonction renderTodos dans le fichier ListeData et la mettre en relation avec une contante data
+*/
+
+/*non résolu:
+les dates ne se stockent pas dans l'item
+les dropdowns ne se remettent pas à zéro après le save et ne se stockent pas dans l'item
+dans la data liste, le search ne fontionne pas, car pas réussi a mettre un nouveau plugin*/
+

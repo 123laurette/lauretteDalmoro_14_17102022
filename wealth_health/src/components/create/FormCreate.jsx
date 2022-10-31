@@ -19,7 +19,6 @@ const statesName= statesFilter(states)
 
 
 
-
 class FormCreate extends Component {
     constructor() {
         super();
@@ -35,16 +34,18 @@ class FormCreate extends Component {
                 departments: "",
                 items: []
         };
+        this.onChange = this.onChange.bind(this)
     }
 
     
-    onChangeFirst(event) {
+    onChange(event) {
+        const name = event.target.name
         this.setState({
-                first:event.target.value
+                [name]:event.target.value
         });
     }
 
-    onChangeLast(event) {
+    /*onChangeLast(event) {
         this.setState({
                 last:event.target.value
         });
@@ -90,7 +91,7 @@ class FormCreate extends Component {
         this.setState({
                 departments:event.target.value
         });
-    }
+    }*/
 
     addTodo(event) {
         event.preventDefault();
@@ -116,16 +117,20 @@ class FormCreate extends Component {
             items: array
         });
     }
-
+    //permet de récupérer l'item avec toutes les nouvelles
     renderTodos() {
+
         return this.state.items.map((item) => {
+            console.log(item)  
+
             return (
                 <div className="list-group-item" key={item}>
-                    {item} | <button onClick={this.deleteTodo.bind(this, item)}>X</button>
-                </div>    
+                    {item}
+                </div> 
             );
         });
     }
+
 
     render() {
         return(
@@ -135,13 +140,13 @@ class FormCreate extends Component {
                 <section className='employee'>
 
                     <label htmlFor="first-name">First Name</label>
-                    <input type="text" id="first-name" name="first" value={this.state.first} onChange={this.onChangeFirst.bind(this)} />
+                    <input type="text" id="first-name" name="first" value={this.state.first} onChange={this.onChange} />
 
                     <label htmlFor="last-name">Last Name</label>
-                    <input type="text" id="last-name" name="last" value={this.state.last} onChange={this.onChangeLast.bind(this)} />
+                    <input type="text" id="last-name" name="last" value={this.state.last} onChange={this.onChange} />
 
                     <label htmlFor="date-of-birth">Date of Birth</label>
-                    <DatePicker  name="birth" value={this.state.last} onChange={this.onChangeLast.bind(this)}/>
+                    <DatePicker  name="birth" value={this.state.last} onChange={this.onChange}/>
 
                     <label htmlFor="start-date">Start Date</label>
                     <DatePicker  name="start" value={this.state.last} />
@@ -151,16 +156,16 @@ class FormCreate extends Component {
                 <section className='adresse'>
 
                     <label htmlFor="street">Street</label>
-                    <input id="street" type="text" name="street" value={this.state.street} onChange={this.onChangeStreet.bind(this)}  />
+                    <input id="street" type="text" name="street" value={this.state.street} onChange={this.onChange}  />
 
                     <label htmlFor="city">City</label>
-                    <input id="city" type="text"  name="city" value={this.state.city} onChange={this.onChangeCity.bind(this)}/>
+                    <input id="city" type="text"  name="city" value={this.state.city} onChange={this.onChange}/>
                     
                     <label htmlFor="state">State</label>
                     <Dropdown options={statesName} onChange={this._onSelect} placeholder="Select an option"name="state" value={this.state.state}  />
 
                     <label htmlFor="zip-code">Zip Code</label>
-                    <input id="zip-code" type="text" name="code" value={this.state.code} onChange={this.onChangeCode.bind(this)} />
+                    <input id="zip-code" type="text" name="code" value={this.state.code} onChange={this.onChange} />
                 </section>
 
                 <section className='department'>
@@ -169,6 +174,7 @@ class FormCreate extends Component {
 
 			</form>
             <button className="save" onClick={this.addTodo.bind(this)}>Save</button>
+            
             
                 <div className="list-group">
                     {this.renderTodos()}
