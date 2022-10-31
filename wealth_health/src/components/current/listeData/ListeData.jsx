@@ -1,6 +1,19 @@
 import DataTable from "react-data-table-component"
 import "./ListeData.css"
 
+/*const sortDate = (rowA, rowB) => {
+    const a = rowA.toLowerCase();
+    const b = rowB.toLowerCase();
+
+    if (a>b) {
+        return 1;
+    }
+    if (b > a) {
+        return -1;
+    }
+    return 0;
+}*/
+
 
 const columns = [
     {
@@ -63,39 +76,86 @@ const data = [
         id: 1,
         first: 'Beetle',
         last: 'Juice',
-        start: "19/10/2022"
+        birth: "1965/12/21",
+        start: "2021/10/19",
+        street: "amusement",
+        city: "fou",
+        state: "skhkgh",
+        code:"25000",
+        department: "jeu",
     },
     {
         id: 2,
         first: 'Ghost',
         last: 'busters',
-        start: "28/08/2022"
-
+        birth: "1965/11/01",
+        start: "2022/10/01",
+        street: "bouuuuu",
+        city: "peur",
+        state: "fbsbf",
+        code:"25000",
+        department: "securité",
     },
     {
         id: 3,
         first: 'laurette',
         last: 'dal moro',
-        start: "01/07/2022"
-
+        birth: "1966/03/17",
+        start: "2021/09/30",
+        street: "metairie",
+        city: "servies",
+        state: "france",
+        code:"81220",
+        department: "compta",
     },
     {
         id: 4,
         first: 'julien',
         last: 'gallet',
-        start: "30/09/2022"
-
+        birth: "1990/06/14",
+        start: "2021/01/01",
+        street: "golf",
+        city: "rochebrune",
+        state: "france",
+        code:"83000",
+        department: "commerce",
+    },
+    {
+        id: 5,
+        first: 'vivian',
+        last: 'mingaud',
+        birth: "1976/04/13",
+        start: "2021/03/10",
+        street: "fontaine",
+        city: "servies",
+        state: "france",
+        code:"81220",
+        department: "graph",
     },
 ]
 
+const subHeaderComponent = (
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+        <input id="outlined-basic" label="Search" variant="outlined" size="small"  style={{ margin: '5px' }} />
 
+    </div>
+);
 function MyComponent() {
     return (
         <>
             <DataTable
-            columns={columns}
-            data={data}
-            pagination
+                columns={columns}
+                data={data}
+                pagination
+                fixedHeader
+                fixedHeaderScrollHeight="300px"
+                highlightOnHover
+                pointerOnHover
+                responsive
+                subHeader
+                subHeaderComponent={subHeaderComponent}
+                subHeaderAlign="right"
+                subHeaderWrap
             />
         </>
     );

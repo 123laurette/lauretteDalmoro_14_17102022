@@ -2,7 +2,6 @@
 .rdt_TableCol{
     display: flex;
     justify-content: space-around;
-    align-items: center;
     height: 50px;
     color: white;
     font-size: 18px;
@@ -12,13 +11,14 @@
 .rdt_TableCell{
     display: flex;
     justify-content: space-around;
-    align-items: center;
     font-size: 15px;
 }
+
 .gKbhqU.rdt_Pagination{
     padding-right: 40%;
     color: black;
     font-size: 15px;
 }
+
 
 
