@@ -1,73 +1,72 @@
 import DataTable from "react-data-table-component"
+import {useState, useMemo} from "react"
 import "./ListeData.css"
-
-/*const sortDate = (rowA, rowB) => {
-    const a = rowA.toLowerCase();
-    const b = rowB.toLowerCase();
-
-    if (a>b) {
-        return 1;
-    }
-    if (b > a) {
-        return -1;
-    }
-    return 0;
-}*/
-
 
 const columns = [
     {
         name: 'First Name',
         selector: row => row.first,
-        sortable: true
+        sortable: true,
+        filterable: true,
+		reorder: true,
     },
     {
         name: 'Last Name',
         selector: row => row.last,
-        sortable: true
+        sortable: true,
+        filterable: true,
+		reorder: true,
 
     },
     {
         name: 'Start Date',
         selector: row => row.start,
-        sortable: true
-
+        sortable: true,
+        filterable: true,
+		reorder: true,
     },
     {
         name: 'Department',
         selector: row => row.department,
-        sortable: true
+        sortable: true,
+        filterable: true,
+		reorder: true,
 
     },
     {
         name: 'Date of Birth',
         selector: row => row.birth,
-        sortable: true
-
+        sortable: true,
+        filterable: true,
+		reorder: true,
     },
     {
         name: 'Street',
         selector: row => row.street,
-        sortable: true
-
+        sortable: true,
+        filterable: true,
+		reorder: true,
     },
     {
         name: 'City',
         selector: row => row.city,
-        sortable: true
-
+        sortable: true,
+        filterable: true,
+		reorder: true,
     },
     {
         name: 'State',
         selector: row => row.state,
-        sortable: true
-
+        sortable: true,
+        filterable: true,
+		reorder: true,
     },
     {
         name: 'Zip Code',
         selector: row => row.code,
-        sortable: true
-
+        sortable: true,
+        filterable: true,
+		reorder: true,
     },
 ];
 
@@ -87,7 +86,7 @@ const data = [
     {
         id: 2,
         first: 'Ghost',
-        last: 'busters',
+        last: 'Busters',
         birth: "1965/11/01",
         start: "2022/10/01",
         street: "bouuuuu",
@@ -98,8 +97,8 @@ const data = [
     },
     {
         id: 3,
-        first: 'laurette',
-        last: 'dal moro',
+        first: 'Laurette',
+        last: 'Dal moro',
         birth: "1966/03/17",
         start: "2021/09/30",
         street: "metairie",
@@ -110,8 +109,8 @@ const data = [
     },
     {
         id: 4,
-        first: 'julien',
-        last: 'gallet',
+        first: 'Julien',
+        last: 'Gallet',
         birth: "1990/06/14",
         start: "2021/01/01",
         street: "golf",
@@ -122,8 +121,8 @@ const data = [
     },
     {
         id: 5,
-        first: 'vivian',
-        last: 'mingaud',
+        first: 'Vivian',
+        last: 'Mingaud',
         birth: "1976/04/13",
         start: "2021/03/10",
         street: "fontaine",
@@ -133,34 +132,68 @@ const data = [
         department: "graph",
     },
 ]
+let results = [...data]
 
-const subHeaderComponent = (
-    <div style={{ display: 'flex', alignItems: 'center'
-    }}>
-        <input id="outlined-basic" label="Search" variant="outlined" size="small"  style={{ margin: '5px' }} />
+console.log(results)
 
-    </div>
+const FilterComponent = ({ filterText, onFilter, onClear }) => (
+	<>
+		<input
+			id="search"
+			type="text"
+			placeholder="Search"
+			aria-label="Search Input"
+			value={filterText}
+			onChange={onFilter}
+		/>
+		<button type="button" onClick={onClear}>
+			X
+		</button>
+	</>
 );
-function MyComponent() {
-    return (
-        <>
-            <DataTable
-                columns={columns}
-                data={data}
-                pagination
-                fixedHeader
-                fixedHeaderScrollHeight="300px"
-                highlightOnHover
-                pointerOnHover
-                responsive
-                subHeader
-                subHeaderComponent={subHeaderComponent}
-                subHeaderAlign="right"
-                subHeaderWrap
-            />
-        </>
-    );
-};
+function MyComponent(item) {
+    const [filterText, setFilterText] = useState('');
+	const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
+
+	const filteredItems = results.filter(item =>
+        (item.first.toLowerCase()).includes(filterText.toLowerCase()) ||
+        (item.last.toLowerCase()).includes(filterText.toLowerCase()) ||
+        (item.start.toLowerCase()).includes(filterText.toLowerCase()) ||
+        (item.department.toLowerCase()).includes(filterText.toLowerCase()) ||
+        (item.birth.toLowerCase()).includes(filterText.toLowerCase()) ||
+        (item.street.toLowerCase()).includes(filterText.toLowerCase()) ||
+        (item.city.toLowerCase()).includes(filterText.toLowerCase()) ||
+        (item.state.toLowerCase()).includes(filterText.toLowerCase()) ||
+        (item.code.toLowerCase()).includes(filterText.toLowerCase())
+	);
+
+	const subHeaderComponentMemo = useMemo(() => {
+		const handleClear = () => {
+			if (filterText) {
+				setResetPaginationToggle(!resetPaginationToggle);
+				setFilterText('');
+			}
+		};
+
+		return (
+			<FilterComponent onFilter={e => setFilterText(e.target.value)} onClear={handleClear} filterText={filterText} />
+		);
+	}, [filterText, resetPaginationToggle]);
+    console.log (item)
+
+	return (
+		<DataTable
+			columns={columns}
+			data={filteredItems}
+			pagination
+			paginationResetDefaultPage={resetPaginationToggle} 
+			subHeader
+			subHeaderComponent={subHeaderComponentMemo}
+			persistTableHead
+		/>
+	);
+}
+
 
 export default MyComponent
 

@@ -36,7 +36,6 @@ class FormCreate extends Component {
         };
         this.onChange = this.onChange.bind(this)
     }
-
     
     onChange(event) {
         const name = event.target.name
@@ -98,8 +97,8 @@ class FormCreate extends Component {
         this.setState({
             first: "",
             last: "",
-            birth: "",
-            start: "",
+            birth: new Date(),
+            start: new Date(),
             street: "",
             city: "",
             state: "",
@@ -145,11 +144,15 @@ class FormCreate extends Component {
                     <label htmlFor="last-name">Last Name</label>
                     <input type="text" id="last-name" name="last" value={this.state.last} onChange={this.onChange} />
 
+
+
                     <label htmlFor="date-of-birth">Date of Birth</label>
-                    <DatePicker  name="birth" value={this.state.last} onChange={this.onChange}/>
+                    <DatePicker  name="birth" selected={this.state.birth} onSelect={(date)=> this.setState.birth(date)}/>
+                    
+                    
 
                     <label htmlFor="start-date">Start Date</label>
-                    <DatePicker  name="start" value={this.state.last} />
+                    <DatePicker  name="start" value={this.state.start} onChange={(value) => this.setState.start({...this.state.start, start: value })} />
 
                 </section>
 
