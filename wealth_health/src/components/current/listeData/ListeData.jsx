@@ -133,7 +133,6 @@ const data = [
     },
 ]
 let results = [...data]
-
 console.log(results)
 
 const FilterComponent = ({ filterText, onFilter, onClear }) => (
@@ -205,5 +204,4 @@ importer la fonction renderTodos dans le fichier ListeData et la mettre en relat
 /*non résolu:
 les dates ne se stockent pas dans l'item
 les dropdowns ne se remettent pas à zéro après le save et ne se stockent pas dans l'item
-dans la data liste, le search ne fontionne pas, car pas réussi a mettre un nouveau plugin*/
-
+*/

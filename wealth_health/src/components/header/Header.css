@@ -1,13 +1,14 @@
-header{
+.header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: rgb(68, 97, 68);
     height: 100px;
+    width: 100%;
 }
-header img{
-    height: 200px;
-    width: 200px;
+.header img{
+    height: 178px;
+    width: 178px;
     border: rgb(68, 97, 68) solid;
     margin-left: 20px;
     margin-top: 105px;

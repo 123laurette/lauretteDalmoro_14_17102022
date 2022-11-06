@@ -8,7 +8,7 @@ import logo from "./../../assets/logo Wealth_Health.jpg"
 const Header = () => {
     return (
         <>
-            <header>
+            <header className='header'>
                 <img src={logo} alt="logo Wealth Health"/>
                 <nav>
                     <Link to="./CreateEmployee">Create employee</Link>

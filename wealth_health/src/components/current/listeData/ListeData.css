@@ -20,5 +20,16 @@
     font-size: 15px;
 }
 
-
-
+.kDEcCH button, input{
+    font-size: 20px;
+    border: rgb(68, 97, 68) solid;
+    
+}
+.kDEcCH button{
+    width: 50px;
+    margin-right: 4px;
+}
+.kDEcCH input, placeholder{
+    width: 300px;
+    text-align: center;
+}

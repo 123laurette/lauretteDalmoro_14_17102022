@@ -6,12 +6,11 @@ import ListeData from "./../../components/current/listeData/ListeData"
 const CurrentEmployees = () => {
     return (
         <>
-        <h2 className='current'>list of employees
-        </h2>
-
         
 
         <section className='enteteTable'>
+        <h2 className='current'>list of employees
+        </h2>
             <ListeData />
         </section>
 
