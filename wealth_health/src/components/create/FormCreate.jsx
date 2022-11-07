@@ -8,13 +8,15 @@ import {states} from "../../data/states"
 //Gestion des listes dropdown
 const departments = ["Sales", "Marketing", "Engineering", "Human Resources", "Legal"]
 
+let tabStatesFilter = [];
+
 const statesFilter= (states) => {
-    const tabStatesFilter = [];
     states.map(state => (
         tabStatesFilter.push(state.name)
     ))
     return tabStatesFilter;
 }
+
 const statesName= statesFilter(states)
 
 
@@ -97,14 +99,14 @@ class FormCreate extends Component {
         this.setState({
             first: "",
             last: "",
-            birth: new Date(),
-            start: new Date(),
+            birth: "",
+            start: "",
             street: "",
             city: "",
             state: "",
             code: "",
             departments: "",
-            items: [...this.state.items, this.state.first, this.state.last, this.state.birth, this.state.start, this.state.street, this.state.city, this.state.state, this.state.code, this.state.departments]
+            items: [this.state.first, this.state.last, this.state.birth, this.state.start, this.state.street, this.state.city, this.state.state, this.state.code, this.state.departments]
         });
     }
 
@@ -116,7 +118,7 @@ class FormCreate extends Component {
             items: array
         });
     }
-    //permet de récupérer l'item avec toutes les nouvelles
+    //permet de récupérer l'item avec toutes les nouvelles données
     renderTodos() {
 
         return this.state.items.map((item) => {
@@ -147,12 +149,11 @@ class FormCreate extends Component {
 
 
                     <label htmlFor="date-of-birth">Date of Birth</label>
-                    <DatePicker  name="birth" selected={this.state.birth} onSelect={(date)=> this.setState.birth(date)}/>
+                    <DatePicker  name="birth" value={this.state.birth} />
                     
                     
-
                     <label htmlFor="start-date">Start Date</label>
-                    <DatePicker  name="start" value={this.state.start} onChange={(value) => this.setState.start({...this.state.start, start: value })} />
+                    <DatePicker  name="start" value={this.state.start}  />
 
                 </section>
 
@@ -189,3 +190,13 @@ class FormCreate extends Component {
 }
 
 export default FormCreate;
+
+
+
+//date, state et departments ne se stockent pas
+//state et departments ne se remettent pas à zéro
+
+/*reflexion :
+les values du formulaire sont récupérées dans item fonction renderTodos
+importer la fonction renderTodos dans le fichier ListeData et la mettre en relation avec une constante data
+*/

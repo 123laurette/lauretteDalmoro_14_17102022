@@ -196,12 +196,6 @@ function MyComponent(item) {
 
 export default MyComponent
 
-/*reflexion :
-les values du formulaire sont récupérées dans item fonction renderTodos
-importer la fonction renderTodos dans le fichier ListeData et la mettre en relation avec une contante data
-*/
 
-/*non résolu:
-les dates ne se stockent pas dans l'item
-les dropdowns ne se remettent pas à zéro après le save et ne se stockent pas dans l'item
-*/
+
+
