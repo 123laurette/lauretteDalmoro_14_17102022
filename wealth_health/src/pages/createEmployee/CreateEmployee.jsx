@@ -1,7 +1,7 @@
 import React from 'react';
 import "./CreateEmployee.css"
 import FormCreate from "../../components/create/FormCreate"
-//import Modale from "laurette.modale"
+//import Modale from "laurette_modale"
 
 const CreateEmployee = () => {
     return (
