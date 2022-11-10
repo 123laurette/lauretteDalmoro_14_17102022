@@ -27,8 +27,8 @@ class FormCreate extends Component {
         this.state = {
                 first: "",
                 last: "",
-                birth: "",
-                start: "",
+                birth: new Date(),
+                start: new Date(),
                 street: "",
                 city: "",
                 state: "",
@@ -149,11 +149,11 @@ class FormCreate extends Component {
 
 
                     <label htmlFor="date-of-birth">Date of Birth</label>
-                    <DatePicker  name="birth" value={this.state.birth} />
+                    <DatePicker  name="birth" value={this.state.birth} onChange={this.onChange} />
                     
                     
                     <label htmlFor="start-date">Start Date</label>
-                    <DatePicker  name="start" value={this.state.start}  />
+                    <DatePicker  name="start" value={this.state.start} onChange={this.onChange} />
 
                 </section>
 
