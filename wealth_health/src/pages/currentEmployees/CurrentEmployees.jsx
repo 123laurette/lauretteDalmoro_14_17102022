@@ -1,7 +1,6 @@
 import React from 'react';
 import "./CurrentEmployees.css"
-import ListeData from "./../../components/current/listeData/ListeData"
-//import {renderTodos} from "./../../components/create/Create"
+import ListeData from "./../../components/current/ListeData"
 
 const CurrentEmployees = () => {
     return (

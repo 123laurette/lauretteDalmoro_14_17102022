@@ -27,8 +27,6 @@ const statesName= statesFilter(states)
 function formatDate(date) {
     const dateNew = new Date(date)
     const dateISO = dateNew.toISOString().split("T")[0]
-    console.log(dateISO)
-
     const [year, month, day] = dateISO.split(".")
 
     return [month, day,year].join("/")
@@ -37,47 +35,37 @@ function formatDate(date) {
 //********************************************************
 
 function CreateEmployee() {
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [birthDate, setBirthDate] = useState(new Date())
-    const [startDate, setStartDate] = useState(new Date())
+    const [first, setFirst] = useState("")
+    const [last, setLast] = useState("")
+    const [birth, setBirth] = useState(new Date())
+    const [start, setStart] = useState(new Date())
     const [street, setStreet] = useState("")
     const [city, setCity] = useState("")
     const [stateList, setStateList] = useState("")
-    const [zipCode, setZipCode] = useState("")
+    const [code, setCode] = useState("")
     const [department, setDepartment] = useState("")
 
     const item = {
-    "firstName": firstName,
-    "lastName": lastName,
-    "birthDate": formatDate(birthDate),
-    "startDate": formatDate(startDate),
+    "first": first,
+    "last": last,
+    "birth": formatDate(birth),
+    "start": formatDate(start),
     "street": street,
     "city": city,
     "stateList": stateList,
-    "zipCode": zipCode,
+    "code": code,
     "department": department,
     }
 
 
      //permet de récupérer l'item avec toutes les nouvelles données
-let tabItem = []
-const renderTodos= () => (
+    let tabItem = []
+
+    const renderDatas= () => (
         tabItem.push(item)
     )
-console.log (tabItem)
+    console.log (tabItem)
 
-    /*function deleteTodo(item) {
-        const array = this.state.items;
-        const index = array.indexOf(item);
-        array.splice(index, 1);
-        this.setState({
-            items: array
-        });
-    }*/
-   
-
-    
         return(
             <>
             <form id="formulaire">
@@ -85,19 +73,19 @@ console.log (tabItem)
                 <section className='employee'>
 
                 <label htmlFor="first-name">First Name</label>
-                    <input type="text" id="first-name" name="first"  onChange={(e) => setFirstName(e.target.value)} />
+                    <input type="text" id="first" name="first"  onChange={(e) => setFirst(e.target.value)} />
 
                     <label htmlFor="last-name">Last Name</label>
-                    <input type="text" id="last-name" name="last" onChange={(e) => setLastName(e.target.value)}  />
+                    <input type="text" id="last" name="last" onChange={(e) => setLast(e.target.value)}  />
 
 
 
                     <label htmlFor="date-of-birth">Date of Birth</label>
-                    <DatePicker  name="birth" selected={birthDate} onChange={setBirthDate} value={birthDate} />
+                    <DatePicker  name="birth" selected={birth} onChange={setBirth} value={birth} />
                     
                     
                     <label htmlFor="start-date">Start Date</label>
-                    <DatePicker  name="start" selected={startDate} onChange={setStartDate} value={startDate} />
+                    <DatePicker  name="start" selected={start} onChange={setStart} value={start} />
 
                 </section>
 
@@ -110,10 +98,10 @@ console.log (tabItem)
                     <input id="city" type="text"  name="city" onChange={(e) => setCity(e.target.value)} />
                     
                     <label htmlFor="state">State</label>
-                    <Dropdown  placeholder="Select an option"name="state" options={statesName} selected={stateList} onChange={setStateList} />
+                    <Dropdown  placeholder="Select an option"name="stateList" options={statesName} selected={stateList} onChange={setStateList} />
 
                     <label htmlFor="zip-code">Zip Code</label>
-                    <input id="zip-code" type="text" name="code" onChange={(e) => setZipCode(e.target.value)}/>
+                    <input id="zip-code" type="text" name="code" onChange={(e) => setCode(e.target.value)}/>
                 </section>
 
                 <section className='department'>
@@ -121,11 +109,11 @@ console.log (tabItem)
                 </section>
 
 			</form>
-            <button className="save" >Save</button>
+            <button className="save"> Save </button>
             
             
                 <div className="list-group">
-                    {renderTodos(tabItem)} 
+                    {renderDatas(tabItem)} 
                 </div>
 
             </>
