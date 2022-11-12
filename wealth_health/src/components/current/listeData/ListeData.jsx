@@ -178,7 +178,6 @@ function MyComponent(item) {
 			<FilterComponent onFilter={e => setFilterText(e.target.value)} onClear={handleClear} filterText={filterText} />
 		);
 	}, [filterText, resetPaginationToggle]);
-    console.log (item)
 
 	return (
 		<DataTable

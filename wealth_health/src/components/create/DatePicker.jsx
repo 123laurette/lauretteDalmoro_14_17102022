@@ -1,25 +1,20 @@
-
-
-import React, { Component } from "react";
-import DatePicker from "react-datepicker";
+import React, { useState } from "react";
+import ReactDatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-class Datepicker extends Component {
-  state = {
-    startDate: new Date(),
-  };
 
-  render() {
-    const { startDate } = this.state;
-    return <DatePicker selected={startDate} onChange={this.handleChange} />;
-  }
+const DatePicker = () => {
+  const [startDate, setStartDate] = useState(new Date())
 
-  handleChange = (startDate) => {
-    this.setState({
-      startDate,
-    });
-  };
-}
+  return (
+    <>
+      <ReactDatePicker selected={startDate} onSelect={date => setStartDate(date)} />
+    </>
+  );
+};
 
-export default Datepicker;
+
+
+
+export default DatePicker;
