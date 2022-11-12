@@ -85,10 +85,10 @@ console.log (tabItem)
                 <section className='employee'>
 
                 <label htmlFor="first-name">First Name</label>
-                    <input type="text" id="first-name" name="first" value={setFirstName.toLowerCase} onChange={(e) => setFirstName(e.target.value)} />
+                    <input type="text" id="first-name" name="first"  onChange={(e) => setFirstName(e.target.value)} />
 
                     <label htmlFor="last-name">Last Name</label>
-                    <input type="text" id="last-name" name="last" value={setLastName.toLowerCase} onChange={(e) => setLastName(e.target.value)}  />
+                    <input type="text" id="last-name" name="last" onChange={(e) => setLastName(e.target.value)}  />
 
 
 
@@ -104,16 +104,16 @@ console.log (tabItem)
                 <section className='adresse'>
 
                     <label htmlFor="street">Street</label>
-                    <input id="street" type="text" name="street" value={setStreet.toLowerCase} onChange={(e) => setStreet(e.target.value)}  />
+                    <input id="street" type="text" name="street"  onChange={(e) => setStreet(e.target.value)}  />
 
                     <label htmlFor="city">City</label>
-                    <input id="city" type="text"  name="city" value={setCity.toLowerCase} onChange={(e) => setCity(e.target.value)} />
+                    <input id="city" type="text"  name="city" onChange={(e) => setCity(e.target.value)} />
                     
                     <label htmlFor="state">State</label>
                     <Dropdown  placeholder="Select an option"name="state" options={statesName} selected={stateList} onChange={setStateList} />
 
                     <label htmlFor="zip-code">Zip Code</label>
-                    <input id="zip-code" type="text" name="code" value={setZipCode.toLowerCase} onChange={(e) => setZipCode(e.target.value)}/>
+                    <input id="zip-code" type="text" name="code" onChange={(e) => setZipCode(e.target.value)}/>
                 </section>
 
                 <section className='department'>
