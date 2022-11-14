@@ -5,7 +5,10 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import {states} from "../../data/states"
+import {states} from "../../data/states";
+//import {useDispatch, useSelector} from "redux"
+
+
 
 //***************Gestion des listes dropdown************
 const departments = ["Sales", "Marketing", "Engineering", "Human Resources", "Legal"]
@@ -34,6 +37,8 @@ function formatDate(date) {
 
 //********************************************************
 
+let tabItem = []
+
 function CreateEmployee() {
     const [first, setFirst] = useState("")
     const [last, setLast] = useState("")
@@ -44,6 +49,8 @@ function CreateEmployee() {
     const [stateList, setStateList] = useState("")
     const [code, setCode] = useState("")
     const [department, setDepartment] = useState("")
+
+    //const dispatch = useDispatch()
 
     const item = {
     "first": first,
@@ -56,18 +63,16 @@ function CreateEmployee() {
     "code": code,
     "department": department,
     }
-
-
+console.log(item)
      //permet de récupérer l'item avec toutes les nouvelles données
-    let tabItem = []
 
     const renderDatas= () => (
         tabItem.push(item)
     )
-    console.log (tabItem)
-
+    
         return(
             <>
+            
             <form id="formulaire">
                 
                 <section className='employee'>
@@ -107,21 +112,19 @@ function CreateEmployee() {
                 <section className='department'>
                     <Dropdown options={departments} placeholder="Departments" name="departments" selected={departments} onChange={setDepartment} />
                 </section>
-
-			</form>
-            <button className="save"> Save </button>
-            
-            
-                <div className="list-group">
-                    {renderDatas(tabItem)} 
-                </div>
+			
+                <button className="save" type="button" onClick={() => renderDatas()}> Save </button>
+            </form>
 
             </>
+
         );
     }
+    console.log(tabItem)
 
 
-export default CreateEmployee;
+export {tabItem}
+export default CreateEmployee
 
 
 

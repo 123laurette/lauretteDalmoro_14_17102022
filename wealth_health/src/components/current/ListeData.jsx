@@ -1,6 +1,7 @@
 import DataTable from "react-data-table-component"
 import {useState, useMemo} from "react"
 import "./ListeData.css"
+import {tabItem} from "./../create/FormCreate"
 
 const columns = [
     {
@@ -70,7 +71,7 @@ const columns = [
     },
 ];
 
-const data = [
+/*const data = [
     {
         id: 1,
         first: 'Beetle',
@@ -131,9 +132,11 @@ const data = [
         code:"81220",
         department: "graph",
     },
-]
-let results = [...data]
+]*/
+let results = [...tabItem]
 console.log(results)
+console.log(tabItem)
+
 
 const FilterComponent = ({ filterText, onFilter, onClear }) => (
 	<>
@@ -150,20 +153,20 @@ const FilterComponent = ({ filterText, onFilter, onClear }) => (
 		</button>
 	</>
 );
-function MyComponent(item) {
+function MyComponent() {
     const [filterText, setFilterText] = useState('');
 	const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
 
-	const filteredItems = results.filter(item =>
-        (item.first.toLowerCase()).includes(filterText.toLowerCase()) ||
-        (item.last.toLowerCase()).includes(filterText.toLowerCase()) ||
-        (item.start.toLowerCase()).includes(filterText.toLowerCase()) ||
-        (item.department.toLowerCase()).includes(filterText.toLowerCase()) ||
-        (item.birth.toLowerCase()).includes(filterText.toLowerCase()) ||
-        (item.street.toLowerCase()).includes(filterText.toLowerCase()) ||
-        (item.city.toLowerCase()).includes(filterText.toLowerCase()) ||
-        (item.state.toLowerCase()).includes(filterText.toLowerCase()) ||
-        (item.code.toLowerCase()).includes(filterText.toLowerCase())
+	const filteredItems = results.filter(data =>
+        (data.first.toLowerCase()).includes(filterText.toLowerCase()) ||
+        (data.last.toLowerCase()).includes(filterText.toLowerCase()) ||
+        (data.start.toLowerCase()).includes(filterText.toLowerCase()) ||
+        (data.department.toLowerCase()).includes(filterText.toLowerCase()) ||
+        (data.birth.toLowerCase()).includes(filterText.toLowerCase()) ||
+        (data.street.toLowerCase()).includes(filterText.toLowerCase()) ||
+        (data.city.toLowerCase()).includes(filterText.toLowerCase()) ||
+        (data.state.toLowerCase()).includes(filterText.toLowerCase()) ||
+        (data.code.toLowerCase()).includes(filterText.toLowerCase())
 	);
 
 	const subHeaderComponentMemo = useMemo(() => {
