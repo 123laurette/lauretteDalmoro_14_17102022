@@ -6,6 +6,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import {states} from "../../data/states";
+import Modale from "laurette_modale/dist/Button"
+import "laurette_modale/dist/Modale.css"
+
 //import {useDispatch, useSelector} from "redux"
 
 
@@ -37,7 +40,7 @@ function formatDate(date) {
 
 //********************************************************
 
-let tabItem = []
+let item = []
 
 function CreateEmployee() {
     const [first, setFirst] = useState("")
@@ -52,7 +55,7 @@ function CreateEmployee() {
 
     //const dispatch = useDispatch()
 
-    const item = {
+    item = {
     "first": first,
     "last": last,
     "birth": formatDate(birth),
@@ -63,67 +66,67 @@ function CreateEmployee() {
     "code": code,
     "department": department,
     }
-console.log(item)
+    console.log(item)
      //permet de récupérer l'item avec toutes les nouvelles données
 
-    const renderDatas= () => (
-        tabItem.push(item)
-    )
+   
     
         return(
             <>
-            
-            <form id="formulaire">
-                
-                <section className='employee'>
 
-                <label htmlFor="first-name">First Name</label>
-                    <input type="text" id="first" name="first"  onChange={(e) => setFirst(e.target.value)} />
+                <form id="formulaire">
 
-                    <label htmlFor="last-name">Last Name</label>
-                    <input type="text" id="last" name="last" onChange={(e) => setLast(e.target.value)}  />
+                    <section className='employee'>
+
+                        <label htmlFor="first-name">First Name</label>
+                        <input type="text" id="first" name="first" onChange={(e) => setFirst(e.target.value)} />
+
+                        <label htmlFor="last-name">Last Name</label>
+                        <input type="text" id="last" name="last" onChange={(e) => setLast(e.target.value)} />
 
 
 
-                    <label htmlFor="date-of-birth">Date of Birth</label>
-                    <DatePicker  name="birth" selected={birth} onChange={setBirth} value={birth} />
+                        <label htmlFor="date-of-birth">Date of Birth</label>
+                        <DatePicker name="birth" selected={birth} onChange={setBirth} value={birth} />
+
+
+                        <label htmlFor="start-date">Start Date</label>
+                        <DatePicker name="start" selected={start} onChange={setStart} value={start} />
+
+                    </section>
+
+                    <section className='adresse'>
+
+                        <label htmlFor="street">Street</label>
+                        <input id="street" type="text" name="street" onChange={(e) => setStreet(e.target.value)} />
+
+                        <label htmlFor="city">City</label>
+                        <input id="city" type="text" name="city" onChange={(e) => setCity(e.target.value)} />
+
+                        <label htmlFor="state">State</label>
+                        <Dropdown placeholder="Select an option" name="stateList" options={statesName} selected={stateList} onChange={setStateList} />
+
+                        <label htmlFor="zip-code">Zip Code</label>
+                        <input id="zip-code" type="text" name="code" onChange={(e) => setCode(e.target.value)} />
+                    </section>
+
+                    <section className='department'>
+                        <Dropdown options={departments} placeholder="Departments" name="departments" selected={departments} onChange={setDepartment} />
+                    </section>
+
                     
-                    
-                    <label htmlFor="start-date">Start Date</label>
-                    <DatePicker  name="start" selected={start} onChange={setStart} value={start} />
-
-                </section>
-
-                <section className='adresse'>
-
-                    <label htmlFor="street">Street</label>
-                    <input id="street" type="text" name="street"  onChange={(e) => setStreet(e.target.value)}  />
-
-                    <label htmlFor="city">City</label>
-                    <input id="city" type="text"  name="city" onChange={(e) => setCity(e.target.value)} />
-                    
-                    <label htmlFor="state">State</label>
-                    <Dropdown  placeholder="Select an option"name="stateList" options={statesName} selected={stateList} onChange={setStateList} />
-
-                    <label htmlFor="zip-code">Zip Code</label>
-                    <input id="zip-code" type="text" name="code" onChange={(e) => setCode(e.target.value)}/>
-                </section>
-
-                <section className='department'>
-                    <Dropdown options={departments} placeholder="Departments" name="departments" selected={departments} onChange={setDepartment} />
-                </section>
-			
-                <button className="save" type="button" onClick={() => renderDatas()}> Save </button>
-            </form>
-
-            </>
-
+                </form>
+                    <Modale textButton="save"
+                /> 
+               
+                </>
         );
-    }
-    console.log(tabItem)
+
+}
 
 
-export {tabItem}
+
+export {item}
 export default CreateEmployee
 
 
@@ -134,3 +137,7 @@ export default CreateEmployee
 les values du formulaire sont récupérées dans item fonction renderTodos
 importer la fonction renderTodos dans le fichier ListeData et la mettre en relation avec une constante data
 */
+
+
+/*pour info, j'ai dissocié le css des fichiers jsx dans mon plugin, pour pouvoir le modifier quand je l'intègre dans mon projet
+donc dans mon readme du plugin il faudra que je précise d'importer le css button et modale pour avoir une mise en style*/

@@ -1,7 +1,7 @@
 import DataTable from "react-data-table-component"
 import {useState, useMemo} from "react"
 import "./ListeData.css"
-import {tabItem} from "./../create/FormCreate"
+import {item} from "./../create/FormCreate"
 
 const columns = [
     {
@@ -71,6 +71,12 @@ const columns = [
     },
 ];
 
+let tabItem = []
+function renderDatas() {
+    tabItem.push(item)
+    return tabItem
+
+}
 /*const data = [
     {
         id: 1,
@@ -167,8 +173,9 @@ function MyComponent() {
         (data.city.toLowerCase()).includes(filterText.toLowerCase()) ||
         (data.state.toLowerCase()).includes(filterText.toLowerCase()) ||
         (data.code.toLowerCase()).includes(filterText.toLowerCase())
-	);
 
+	);
+        
 	const subHeaderComponentMemo = useMemo(() => {
 		const handleClear = () => {
 			if (filterText) {
@@ -185,13 +192,15 @@ function MyComponent() {
 	return (
 		<DataTable
 			columns={columns}
-			data={filteredItems}
+			data={renderDatas(filteredItems)} //filteredItems, était inscrit à la place de tabItem et là le filtre fonctionne
 			pagination
 			paginationResetDefaultPage={resetPaginationToggle} 
 			subHeader
 			subHeaderComponent={subHeaderComponentMemo}
 			persistTableHead
 		/>
+        
+
 	);
 }
 
