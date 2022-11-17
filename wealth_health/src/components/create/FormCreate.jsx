@@ -35,7 +35,7 @@ function formatDate(date) {
     const dateISO = dateNew.toISOString().split("T")[0]
     const [year, month, day] = dateISO.split(".")
 
-    return [month, day,year].join("/")
+    return [month, day,year].join("")
 }
 
 //********************************************************
@@ -67,7 +67,6 @@ function CreateEmployee() {
     "department": department,
     }
     console.log(item)
-     //permet de récupérer l'item avec toutes les nouvelles données
 
    
     
@@ -79,7 +78,7 @@ function CreateEmployee() {
                     <section className='employee'>
 
                         <label htmlFor="first-name">First Name</label>
-                        <input type="text" id="first" name="first" onChange={(e) => setFirst(e.target.value)} />
+                        <input type="text" id="first" name="first" onChange={(e) => setFirst(e.target.value)}/>
 
                         <label htmlFor="last-name">Last Name</label>
                         <input type="text" id="last" name="last" onChange={(e) => setLast(e.target.value)} />
@@ -116,8 +115,7 @@ function CreateEmployee() {
 
                     
                 </form>
-                    <Modale textButton="save"
-                /> 
+                    <Modale /> 
                
                 </>
         );

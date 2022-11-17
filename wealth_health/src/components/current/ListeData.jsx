@@ -72,11 +72,15 @@ const columns = [
 ];
 
 let tabItem = []
-function renderDatas() {
+
+const renderDatas = () => {
     tabItem.push(item)
     return tabItem
-
 }
+let results = [...tabItem]
+console.log(results)
+console.log(tabItem)
+
 /*const data = [
     {
         id: 1,
@@ -139,9 +143,25 @@ function renderDatas() {
         department: "graph",
     },
 ]*/
-let results = [...tabItem]
+/*let results = [...tabItem]
 console.log(results)
 console.log(tabItem)
+
+let tabItem = []
+//je récupère le nouvel employé et je le mets dans un tableau
+function getData() {
+    tabItem.push(item)
+    return tabItem
+}
+//je stock ce tableau dans une constante
+const tabDataListe = () => {
+    localStorage.setItem(getData())
+    console.log(tabDataListe)
+}
+//j'envoi cette constante de stockage dans une const result
+let results = ([tabDataListe])
+console.log(results)
+console.log(tabItem)*/
 
 
 const FilterComponent = ({ filterText, onFilter, onClear }) => (
