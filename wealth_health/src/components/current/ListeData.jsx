@@ -1,7 +1,9 @@
 import DataTable from "react-data-table-component"
 import {useState, useMemo} from "react"
+import { useSelector } from 'react-redux'
+import { selectEmployees } from '../../redux/selector';
 import "./ListeData.css"
-import {item} from "./../create/FormCreate"
+//import {tabItem} from "./../create/FormCreate"
 
 const columns = [
     {
@@ -71,15 +73,6 @@ const columns = [
     },
 ];
 
-let tabItem = []
-
-const renderDatas = () => {
-    tabItem.push(item)
-    return tabItem
-}
-let results = [...tabItem]
-console.log(results)
-console.log(tabItem)
 
 /*const data = [
     {
@@ -145,24 +138,7 @@ console.log(tabItem)
 ]*/
 /*let results = [...tabItem]
 console.log(results)
-console.log(tabItem)
-
-let tabItem = []
-//je récupère le nouvel employé et je le mets dans un tableau
-function getData() {
-    tabItem.push(item)
-    return tabItem
-}
-//je stock ce tableau dans une constante
-const tabDataListe = () => {
-    localStorage.setItem(getData())
-    console.log(tabDataListe)
-}
-//j'envoi cette constante de stockage dans une const result
-let results = ([tabDataListe])
-console.log(results)
 console.log(tabItem)*/
-
 
 const FilterComponent = ({ filterText, onFilter, onClear }) => (
 	<>
@@ -182,8 +158,9 @@ const FilterComponent = ({ filterText, onFilter, onClear }) => (
 function MyComponent() {
     const [filterText, setFilterText] = useState('');
 	const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
+    const employees = useSelector(selectEmployees).dataEmployee
 
-	const filteredItems = results.filter(data =>
+	const filteredItems = employees.filter(data =>
         (data.first.toLowerCase()).includes(filterText.toLowerCase()) ||
         (data.last.toLowerCase()).includes(filterText.toLowerCase()) ||
         (data.start.toLowerCase()).includes(filterText.toLowerCase()) ||
@@ -212,7 +189,7 @@ function MyComponent() {
 	return (
 		<DataTable
 			columns={columns}
-			data={renderDatas(filteredItems)} //filteredItems, était inscrit à la place de tabItem et là le filtre fonctionne
+			data={filteredItems} //filteredItems, était inscrit à la place de tabItem et là le filtre fonctionne
 			pagination
 			paginationResetDefaultPage={resetPaginationToggle} 
 			subHeader

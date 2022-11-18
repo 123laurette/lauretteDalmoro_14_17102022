@@ -1,16 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
+import { useDispatch} from "react-redux";
+import { submitForm, unvalidForm, validForm, checkValidForm } from "../../redux/actions"
+
 import "./FormCreate.css"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import {states} from "../../data/states";
-import Modale from "laurette_modale/dist/Button"
-import "laurette_modale/dist/Modale.css"
-
-//import {useDispatch, useSelector} from "redux"
-
 
 
 //***************Gestion des listes dropdown************
@@ -41,7 +39,11 @@ function formatDate(date) {
 //********************************************************
 
 let item = []
+let tabItem = []
 
+const renderDatas = () => {
+    tabItem.push(item)
+}
 function CreateEmployee() {
     const [first, setFirst] = useState("")
     const [last, setLast] = useState("")
@@ -53,7 +55,12 @@ function CreateEmployee() {
     const [code, setCode] = useState("")
     const [department, setDepartment] = useState("")
 
-    //const dispatch = useDispatch()
+    const dispatch = useDispatch()
+    const [,setOpen] = useState(false);
+
+
+
+
 
     item = {
     "first": first,
@@ -68,8 +75,32 @@ function CreateEmployee() {
     }
     console.log(item)
 
-   
+    const saveEmployee = async (e) => {
+        e.preventDefault();
+        checkForm();
+
+        const submit =  dispatch(checkValidForm())
+
+        if(submit){
+            dispatch(submitForm(item))
+        }else{
+            return false
+        }
+
+        setOpen(true)
+    }
+    const checkForm = () => {
+        if((first === '') || (last === '')){
+            dispatch(unvalidForm())
+        }else{
+            dispatch(validForm())
+        }
+    }
     
+    /*const closeModal = () => {
+        document.getElementById("create-employee").reset()
+        setOpen(false)
+    } */
         return(
             <>
 
@@ -113,10 +144,10 @@ function CreateEmployee() {
                         <Dropdown options={departments} placeholder="Departments" name="departments" selected={departments} onChange={setDepartment} />
                     </section>
 
-                    
+                    <div className="button-save">
+                        <button onClick={saveEmployee} >Save</button>
+                    </div>
                 </form>
-                    <Modale /> 
-               
                 </>
         );
 
@@ -124,7 +155,7 @@ function CreateEmployee() {
 
 
 
-export {item}
+export {renderDatas}
 export default CreateEmployee
 
 
