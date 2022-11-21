@@ -9,6 +9,7 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import {states} from "../../data/states";
 import Modale from "laurette_modale/dist/Modale"
+//import "laurette_modale/dist/Modale.css"
 
 
 //***************Gestion des listes dropdown************
@@ -138,12 +139,13 @@ function CreateEmployee() {
                     <section className='department'>
                         <Dropdown options={departments} placeholder="Departments" name="departments" selected={departments} onChange={setDepartment} />
                     </section>
-                    <div className="button-save">
-                        <button  onClick={saveEmployee}> Save </button>
-                        {modal && <Modale  message={"employee successfully created"} closeModale={closeModal}/> }
-
-                    </div>
+                    
                 </form>
+                <div className="button-save">
+                        <button  onClick={saveEmployee}> Save </button>
+                        {modal && <Modale message={"employee successfully created"} closeModale={closeModal}/> }
+
+                </div>
                 </>
         );
 
