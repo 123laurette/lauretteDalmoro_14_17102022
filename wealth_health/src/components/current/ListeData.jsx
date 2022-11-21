@@ -3,7 +3,8 @@ import {useState, useMemo} from "react"
 import { useSelector } from 'react-redux'
 import { selectEmployees } from '../../redux/selector';
 import "./ListeData.css"
-//import {tabItem} from "./../create/FormCreate"
+
+
 
 const columns = [
     {
@@ -12,6 +13,7 @@ const columns = [
         sortable: true,
         filterable: true,
 		reorder: true,
+
     },
     {
         name: 'Last Name',
@@ -27,6 +29,7 @@ const columns = [
         sortable: true,
         filterable: true,
 		reorder: true,
+
     },
     {
         name: 'Department',
@@ -186,6 +189,7 @@ function MyComponent() {
 		);
 	}, [filterText, resetPaginationToggle]);
 
+    
 	return (
 		<DataTable
 			columns={columns}

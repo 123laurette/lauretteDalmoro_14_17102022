@@ -2,13 +2,13 @@ import React from 'react';
 import { useState } from 'react';
 import { useDispatch} from "react-redux";
 import { submitForm, unvalidForm, validForm, checkValidForm } from "../../redux/actions"
-
 import "./FormCreate.css"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import {states} from "../../data/states";
+import Modale from "laurette_modale/dist/Modale"
 
 
 //***************Gestion des listes dropdown************
@@ -56,39 +56,20 @@ function CreateEmployee() {
     const [department, setDepartment] = useState("")
 
     const dispatch = useDispatch()
-    const [,setOpen] = useState(false);
-
-
-
-
 
     item = {
-    "first": first,
-    "last": last,
+    "first": first.toLocaleLowerCase(),
+    "last": last.toLocaleLowerCase(),
     "birth": formatDate(birth),
     "start": formatDate(start),
-    "street": street,
-    "city": city,
+    "street": street.toLocaleLowerCase(),
+    "city": city.toLocaleLowerCase(),
     "stateList": stateList,
     "code": code,
     "department": department,
     }
     console.log(item)
 
-    const saveEmployee = async (e) => {
-        e.preventDefault();
-        checkForm();
-
-        const submit =  dispatch(checkValidForm())
-
-        if(submit){
-            dispatch(submitForm(item))
-        }else{
-            return false
-        }
-
-        setOpen(true)
-    }
     const checkForm = () => {
         if((first === '') || (last === '')){
             dispatch(unvalidForm())
@@ -96,11 +77,25 @@ function CreateEmployee() {
             dispatch(validForm())
         }
     }
-    
-    /*const closeModal = () => {
-        document.getElementById("create-employee").reset()
-        setOpen(false)
-    } */
+    const [modal, setModal] = useState(false);
+
+    const saveEmployee = async (e) => {
+        e.preventDefault();
+        checkForm();
+        const submit =  dispatch(checkValidForm())
+
+        if(submit){
+            dispatch(submitForm(item))
+        }else{
+            return false
+        }
+        setModal(true)
+    }
+
+    const closeModal = () => {
+        document.getElementById("formulaire").reset()
+        setModal(false)
+    } 
         return(
             <>
 
@@ -143,9 +138,10 @@ function CreateEmployee() {
                     <section className='department'>
                         <Dropdown options={departments} placeholder="Departments" name="departments" selected={departments} onChange={setDepartment} />
                     </section>
-
                     <div className="button-save">
-                        <button onClick={saveEmployee} >Save</button>
+                        <button  onClick={saveEmployee}> Save </button>
+                        {modal && <Modale  message={"employee successfully created"} closeModale={closeModal}/> }
+
                     </div>
                 </form>
                 </>

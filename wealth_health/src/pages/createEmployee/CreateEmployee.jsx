@@ -3,6 +3,7 @@ import "./CreateEmployee.css"
 import FormCreate from "../../components/create/FormCreate"
 
 const CreateEmployee = () => {
+
     return (
         <main>
             <h2 className='create'>Create Employee</h2>
