@@ -64,7 +64,7 @@ form input{
     cursor: pointer;
     margin-top: 60px;
     margin-left: 46%;
-    border: white solid;
+    border: rgb(68, 97, 68) solid;
 }
 .button-save button:hover {
     transform: scale(0.9)
