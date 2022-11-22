@@ -9,7 +9,6 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import {states} from "../../data/states";
 import Modale from "laurette_modale/dist/Modale"
-//import "laurette_modale/dist/Modale.css"
 
 
 //***************Gestion des listes dropdown************
@@ -40,11 +39,8 @@ function formatDate(date) {
 //********************************************************
 
 let item = []
-let tabItem = []
 
-const renderDatas = () => {
-    tabItem.push(item)
-}
+
 function CreateEmployee() {
     const [first, setFirst] = useState("")
     const [last, setLast] = useState("")
@@ -153,18 +149,9 @@ function CreateEmployee() {
 
 
 
-export {renderDatas}
 export default CreateEmployee
 
 
 
 
 
-/*reflexion :
-les values du formulaire sont récupérées dans item fonction renderTodos
-importer la fonction renderTodos dans le fichier ListeData et la mettre en relation avec une constante data
-*/
-
-
-/*pour info, j'ai dissocié le css des fichiers jsx dans mon plugin, pour pouvoir le modifier quand je l'intègre dans mon projet
-donc dans mon readme du plugin il faudra que je précise d'importer le css button et modale pour avoir une mise en style*/

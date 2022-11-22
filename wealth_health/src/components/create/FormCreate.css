@@ -70,13 +70,7 @@ form input{
     transform: scale(0.9)
 }
 
-.list-group {
-    width: 500px;
-    height: 50px;
-}
-.list-group-item {
-    width: 100%;
-}
+
 .bcgModale {
     background-color: rgb(136, 190, 136);
     height: 300px;
