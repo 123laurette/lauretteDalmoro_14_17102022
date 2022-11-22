@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import {states} from "../../data/states";
+//import {departments} from "../../data/departments";
 import Modale from "laurette_modale/dist/Modale"
 
 
@@ -48,7 +49,7 @@ function CreateEmployee() {
     const [start, setStart] = useState(new Date())
     const [street, setStreet] = useState("")
     const [city, setCity] = useState("")
-    const [stateList, setStateList] = useState("")
+    const [state, setState] = useState("")
     const [code, setCode] = useState("")
     const [department, setDepartment] = useState("")
 
@@ -61,9 +62,9 @@ function CreateEmployee() {
     "start": formatDate(start),
     "street": street.toLocaleLowerCase(),
     "city": city.toLocaleLowerCase(),
-    "stateList": stateList,
+    "state": state.label,
     "code": code,
-    "department": department,
+    "department": department.label,
     }
     console.log(item)
 
@@ -92,11 +93,13 @@ function CreateEmployee() {
     const closeModal = () => {
         document.getElementById("formulaire").reset()
         setModal(false)
+        setBirth(new Date())
+        setStart(new Date())
     } 
         return(
             <>
 
-                <form id="formulaire">
+                <form  id="formulaire">
 
                     <section className='employee'>
 
@@ -109,7 +112,7 @@ function CreateEmployee() {
 
 
                         <label htmlFor="date-of-birth">Date of Birth</label>
-                        <DatePicker name="birth" selected={birth} onChange={setBirth} value={birth} />
+                        <DatePicker name="birth" selected={birth} onChange={setBirth}  value={birth} />
 
 
                         <label htmlFor="start-date">Start Date</label>
@@ -126,19 +129,19 @@ function CreateEmployee() {
                         <input id="city" type="text" name="city" onChange={(e) => setCity(e.target.value)} />
 
                         <label htmlFor="state">State</label>
-                        <Dropdown placeholder="Select an option" name="stateList" options={statesName} selected={stateList} onChange={setStateList} />
+                        <Dropdown placeholder="Select an option"  name="stateList" options={statesName}  onChange={setState} />
 
                         <label htmlFor="zip-code">Zip Code</label>
                         <input id="zip-code" type="text" name="code" onChange={(e) => setCode(e.target.value)} />
                     </section>
 
                     <section className='department'>
-                        <Dropdown options={departments} placeholder="Departments" name="departments" selected={departments} onChange={setDepartment} />
+                        <Dropdown  placeholder="Departments" name="departments"  options={departments} onChange={setDepartment} />
                     </section>
                     
                 </form>
                 <div className="button-save">
-                        <button  onClick={saveEmployee}> Save </button>
+                        <button   type="reset" onClick={saveEmployee}> Save </button>
                         {modal && <Modale message={"employee successfully created"} closeModale={closeModal}/> }
 
                 </div>

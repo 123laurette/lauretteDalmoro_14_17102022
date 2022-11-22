@@ -139,9 +139,7 @@ const columns = [
         department: "graph",
     },
 ]*/
-/*let results = [...tabItem]
-console.log(results)
-console.log(tabItem)*/
+
 
 const FilterComponent = ({ filterText, onFilter, onClear }) => (
 	<>
@@ -162,6 +160,7 @@ function MyComponent() {
     const [filterText, setFilterText] = useState('');
 	const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
     const employees = useSelector(selectEmployees).dataEmployee
+    console.log(employees)
 
 	const filteredItems = employees.filter(data =>
         (data.first.toLowerCase()).includes(filterText.toLowerCase()) ||
@@ -171,7 +170,7 @@ function MyComponent() {
         (data.birth.toLowerCase()).includes(filterText.toLowerCase()) ||
         (data.street.toLowerCase()).includes(filterText.toLowerCase()) ||
         (data.city.toLowerCase()).includes(filterText.toLowerCase()) ||
-        (data.state.toLowerCase()).includes(filterText.toLowerCase()) ||
+        (data.stateList.toLowerCase()).includes(filterText.toLowerCase()) ||
         (data.code.toLowerCase()).includes(filterText.toLowerCase())
 
 	);
@@ -193,7 +192,7 @@ function MyComponent() {
 	return (
 		<DataTable
 			columns={columns}
-			data={filteredItems} //filteredItems, était inscrit à la place de tabItem et là le filtre fonctionne
+			data={filteredItems}
 			pagination
 			paginationResetDefaultPage={resetPaginationToggle} 
 			subHeader
