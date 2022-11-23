@@ -6,13 +6,11 @@ const CurrentEmployees = () => {
     return (
         <>
         
-
         <section className='enteteTable'>
-        <h2 className='current'>list of employees
-        </h2>
+            <h2 className='current'>list of employees
+            </h2>
             <ListeData />
         </section>
-
         
         </>
     );

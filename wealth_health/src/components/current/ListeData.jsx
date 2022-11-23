@@ -4,8 +4,6 @@ import { useSelector } from 'react-redux'
 import { selectEmployees } from '../../redux/selector';
 import "./ListeData.css"
 
-
-
 const columns = [
     {
         name: 'First Name',
@@ -172,7 +170,6 @@ function MyComponent() {
         (data.city.toLowerCase()).includes(filterText.toLowerCase()) ||
         (data.stateList.toLowerCase()).includes(filterText.toLowerCase()) ||
         (data.code.toLowerCase()).includes(filterText.toLowerCase())
-
 	);
         
 	const subHeaderComponentMemo = useMemo(() => {
@@ -200,13 +197,7 @@ function MyComponent() {
 			persistTableHead
 		/>
         
-
 	);
 }
 
-
 export default MyComponent
-
-
-
-

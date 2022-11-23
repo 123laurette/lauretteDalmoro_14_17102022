@@ -8,7 +8,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import {states} from "../../data/states";
-//import {departments} from "../../data/departments";
 import Modale from "laurette_modale/dist/Modale"
 
 
@@ -98,9 +97,7 @@ function CreateEmployee() {
     } 
         return(
             <>
-
                 <form  id="formulaire">
-
                     <section className='employee'>
 
                         <label htmlFor="first-name">First Name</label>
@@ -138,23 +135,15 @@ function CreateEmployee() {
                     <section className='department'>
                         <Dropdown  placeholder="Departments" name="departments"  options={departments} onChange={setDepartment} />
                     </section>
-                    
                 </form>
+
                 <div className="button-save">
                         <button   type="reset" onClick={saveEmployee}> Save </button>
                         {modal && <Modale message={"employee successfully created"} closeModale={closeModal}/> }
-
                 </div>
+
                 </>
         );
-
 }
 
-
-
 export default CreateEmployee
-
-
-
-
-

@@ -31,6 +31,5 @@ export function submitForm(newEmployee) {
         }else{
             return false
         }
-        
     }
 }
