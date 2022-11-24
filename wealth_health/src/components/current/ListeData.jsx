@@ -168,7 +168,7 @@ function MyComponent() {
         (data.birth.toLowerCase()).includes(filterText.toLowerCase()) ||
         (data.street.toLowerCase()).includes(filterText.toLowerCase()) ||
         (data.city.toLowerCase()).includes(filterText.toLowerCase()) ||
-        (data.stateList.toLowerCase()).includes(filterText.toLowerCase()) ||
+        (data.state.toLowerCase()).includes(filterText.toLowerCase()) ||
         (data.code.toLowerCase()).includes(filterText.toLowerCase())
 	);
         
