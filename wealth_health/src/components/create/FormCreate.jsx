@@ -65,7 +65,6 @@ function CreateEmployee() {
     "code": code,
     "department": department.label,
     }
-    console.log(item)
 
     const checkForm = () => {
         if((first === '') || (last === '')){
@@ -88,7 +87,6 @@ function CreateEmployee() {
         }
         setModal(true)
     }
-
     const closeModal = () => {
         document.getElementById("formulaire").reset()
         setModal(false)
@@ -138,7 +136,7 @@ function CreateEmployee() {
                 </form>
 
                 <div className="button-save">
-                        <button   type="reset" onClick={saveEmployee}> Save </button>
+                        <button  onClick={saveEmployee}> Save </button>
                         {modal && <Modale message={"employee successfully created"} closeModale={closeModal}/> }
                 </div>
 
